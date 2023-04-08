@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Frontend Mentor | Age calculator app</title>
+
+
+</head>
+
+<body>
+
+    <div>Day</div>
+    <input type="number" id="day" min="1" max="31">
+    <p id="err1"></p>
+    <div>Month</div>
+    <input type="number" id="month" min="1" max="12">
+    <p id="err2"></p>
+    <Div>Year</Div>
+    <input type="number" id="year" min="1">
+    <p id="err3"></p>
+    <div>
+        <button style='font-size:24px' onclick="calculate()"><i class='fa fa-angle-down'></i></button>
+    </div>
+
+    <p id="result1"> -- days</p>
+    <p id="result2"> -- months</p>
+    <p id="result3"> -- years</p>
+
+    <script>
+        function calculate() {
+            document.getElementById("err1").innerHTML = "";
+            document.getElementById("err2").innerHTML = "";
+            document.getElementById("err3").innerHTML = "";
+
+            const currentDate = new Date();
+            const day = document.getElementById("day").value;
+            const month = document.getElementById("month").value;
+            const year = document.getElementById("year").value;
+
+            const days = currentDate.getDate() - day + 31;
+            const months = currentDate.getMonth() - month + 12;
+            const years = currentDate.getFullYear() - year - 1;
+
+
+            if (day >= 1 && day <= 31) {
+                if (month >= 1 && month <= 12) {
+                    if (month == 2) {
+                        if (year % 4 == 0) {
+                            if (day > 29) {
+                                document.getElementById("result1").innerHTML = "-- days";
+                                document.getElementById("err1").innerHTML = "<span style='color: red;'>Must be a valid day</span>";
+                                if (month >= 1 && month <= 12) {
+                                    document.getElementById("result2").innerHTML = months + " months";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                } else {
+                                    document.getElementById("result2").innerHTML = "-- months";
+                                    document.getElementById("err2").innerHTML = "<span style='color: red;'>Must be a valid month</span>";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                }
+                            } else {
+                                document.getElementById("result1").innerHTML = days + " days";
+                                if (month >= 1 && month <= 12) {
+                                    document.getElementById("result2").innerHTML = months + " months";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                } else {
+                                    document.getElementById("result2").innerHTML = "-- months";
+                                    document.getElementById("err2").innerHTML = "<span style='color: red;'>Must be a valid month</span>";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                }
+                            }
+                        } else if (year % 4 != 0) {
+                            if (day > 28) {
+                                document.getElementById("result1").innerHTML = "-- days";
+                                document.getElementById("err1").innerHTML = "<span style='color: red;'>Must be a valid day</span>";
+                                if (month >= 1 && month <= 12) {
+                                    document.getElementById("result2").innerHTML = months + " months";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                } else {
+                                    document.getElementById("result2").innerHTML = "-- months";
+                                    document.getElementById("err2").innerHTML = "<span style='color: red;'>Must be a valid month</span>";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                }
+                            } else {
+                                document.getElementById("result1").innerHTML = days + " days";
+                                if (month >= 1 && month <= 12) {
+                                    document.getElementById("result2").innerHTML = months + " months";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                } else {
+                                    document.getElementById("result2").innerHTML = "-- months";
+                                    document.getElementById("err2").innerHTML = "<span style='color: red;'>Must be a valid month</span>";
+                                    if (years >= 0) {
+                                        document.getElementById("result3").innerHTML = years + " years";
+                                    } else {
+                                        document.getElementById("result3").innerHTML = "-- years";
+                                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                                    }
+                                }
+                            }
+                        }
+
+                    } else {
+                        document.getElementById("result1").innerHTML = days + " days";
+                        if (month >= 1 && month <= 12) {
+                            document.getElementById("result2").innerHTML = months + " months";
+                            if (years >= 0) {
+                                document.getElementById("result3").innerHTML = years + " years";
+                            } else {
+                                document.getElementById("result3").innerHTML = "-- years";
+                                document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                            }
+                        } else {
+                            document.getElementById("result2").innerHTML = "-- months";
+                            document.getElementById("err2").innerHTML = "<span style='color: red;'>Must be a valid month</span>";
+                            if (years >= 0) {
+                                document.getElementById("result3").innerHTML = years + " years";
+                            } else {
+                                document.getElementById("result3").innerHTML = "-- years";
+                                document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                            }
+                        }
+                    }
+                }
+            } else {
+                document.getElementById("result1").innerHTML = "-- days";
+                document.getElementById("err1").innerHTML = "<span style='color: red;'>Must be a valid day</span>";
+                if (month >= 1 && month <= 12) {
+                    document.getElementById("result2").innerHTML = months + " months";
+                    if (years >= 0) {
+                        document.getElementById("result3").innerHTML = years + " years";
+                    } else {
+                        document.getElementById("result3").innerHTML = "-- years";
+                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                    }
+                } else {
+                    document.getElementById("result2").innerHTML = "-- months";
+                    document.getElementById("err2").innerHTML = "<span style='color: red;'>Must be a valid month</span>";
+                    if (years >= 0) {
+                        document.getElementById("result3").innerHTML = years + " years";
+                    } else {
+                        document.getElementById("result3").innerHTML = "-- years";
+                        document.getElementById("err3").innerHTML = "<span style='color: red;'>Must be a valid year</span> ";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Muhammad Alexander Dzulkarnain</a>.
+    </div>
+
+</body>
+
+</html>
